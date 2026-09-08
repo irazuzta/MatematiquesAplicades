@@ -14,5 +14,4 @@ conjunt de dades que ja coneixes.
 2. [Representacions gràfiques](02_representacions_grafiques.md) — sectors, barres, histograma i diagrama de Pareto.
 3. [Mesures de centralitat](03_mesures_centralitat.md) — mitjana, mediana i moda.
 4. [Desviació típica](04_desviacio_tipica.md) — variança, desviació típica i la desigualtat de Txebixev.
-
-<!-- La resta de blocs es completaran a mesura que els validem. -->
+5. [Percentils i boxplot](05_percentils_boxplot.md) — quartils, rang interquartílic i diagrama de caixa.
