@@ -5,15 +5,17 @@ Hi trobaràs la teoria de cada bloc explicada de manera seguida —primer el per
 cada idea i després l'enunciat formal—, exercicis per practicar-la i activitats de
 laboratori per treballar-la amb dades reals a R i a Google Sheets.
 
-Tot el material gira al voltant d'un mateix repte: esbrinar si les nits d'estiu són
-cada cop més caloroses a casa nostra, a partir d'una sèrie real de temperatures de
-més de 70 anys. Cada concepte nou —una taula de freqüències, un gràfic, la desviació
+Al Laboratori, tot gira al voltant d'un mateix repte: esbrinar si les nits d'estiu
+són cada cop més caloroses a casa nostra, a partir d'una sèrie real de temperatures
+de més de 70 anys. Cada eina nova —una taula de freqüències, un gràfic, la desviació
 típica, la recta de regressió...— s'aplica sobre aquest mateix conjunt de dades, de
-manera que el fil no es trenca d'un bloc a l'altre.
+manera que el fil no es trenca d'una activitat a la següent.
 
 ## Temes disponibles
 
-<!-- Aquesta llista es completarà a mesura que validem cada bloc. -->
+- [Presentacions](presentacions/index.md) — la teoria de cada bloc, explicada de manera seguida i amb exemples resolts.
+- [Exercicis i activitats](exercicis/index.md) — relacions d'exercicis per practicar cada bloc.
+- [Laboratori](laboratori/index.md) — activitats amb R i Google Sheets sobre dades reals.
 
 ## Autoria
 

@@ -10,4 +10,6 @@ conjunt de dades que ja coneixes.
 
 ## Apartats
 
-<!-- Es completarà a mesura que validem cada bloc. -->
+1. [Taules de freqüència](01_taules_frequencia.md) — tipus de variable i com resumir-la en una taula.
+
+<!-- La resta de blocs es completaran a mesura que els validem. -->

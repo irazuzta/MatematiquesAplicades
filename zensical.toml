@@ -5,7 +5,10 @@ site_name = "Matemàtica Aplicada"
 # etiquetat "Introducció" i després els fitxers del bloc en ordre.
 nav = [
   { "Inici" = "index.md" },
-  { "Presentacions" = "presentacions/index.md" },
+  { "Presentacions" = [
+    { "Introducció" = "presentacions/index.md" },
+    { "1. Taules de freqüència" = "presentacions/01_taules_frequencia.md" },
+  ] },
   { "Exercicis i activitats" = "exercicis/index.md" },
   { "Laboratori" = "laboratori/index.md" },
 ]
