@@ -1,0 +1,116 @@
+[project]
+site_name = "Matemàtica Aplicada"
+
+# El nav s'anirà omplint bloc a bloc. Cada apartat porta el seu index.md
+# etiquetat "Introducció" i després els fitxers del bloc en ordre.
+nav = [
+  { "Inici" = "index.md" },
+  { "Presentacions" = "presentacions/index.md" },
+  { "Exercicis i activitats" = "exercicis/index.md" },
+  { "Laboratori" = "laboratori/index.md" },
+]
+
+extra_javascript = [
+  "javascripts/katex.js",
+  "https://unpkg.com/katex@0/dist/katex.min.js",
+  "https://unpkg.com/katex@0/dist/contrib/auto-render.min.js",
+]
+
+extra_css = [
+  "https://unpkg.com/katex@0/dist/katex.min.css",
+  "stylesheets/extra.css",
+]
+
+# ---------------------------------------------------------------------------
+# Tema
+# ---------------------------------------------------------------------------
+
+[project.theme]
+language = "ca"
+features = [
+  "navigation.tabs",
+  "navigation.sections",
+  "navigation.path",
+  "navigation.instant",
+  "navigation.instant.prefetch",
+  "search.highlight",
+  "content.code.copy",
+  "content.code.annotate",
+  "content.footnote.tooltips",
+  "content.tabs.link",
+]
+
+[project.theme.icon]
+logo = "lucide/sigma"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle = {
+  icon = "material/brightness-auto",
+  name = "Canvia al mode clar",
+}
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle = {
+  icon = "material/brightness-7",
+  name = "Canvia al mode fosc",
+}
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle = {
+  icon = "material/brightness-4",
+  name = "Canvia al mode automàtic",
+}
+
+# ---------------------------------------------------------------------------
+# Extensions de Markdown
+# ---------------------------------------------------------------------------
+
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc = { permalink = true }
+
+"pymdownx.arithmatex" = { generic = true }
+"pymdownx.betterem" = {}
+"pymdownx.caret" = {}
+"pymdownx.details" = {}
+"pymdownx.emoji" = {
+  emoji_generator = "zensical.extensions.emoji.to_svg",
+  emoji_index = "zensical.extensions.emoji.twemoji",
+}
+"pymdownx.highlight" = {
+  anchor_linenums = true,
+  line_spans = "__span",
+  pygments_lang_class = true,
+}
+"pymdownx.inlinehilite" = {}
+"pymdownx.keys" = {}
+"pymdownx.magiclink" = {}
+"pymdownx.mark" = {}
+"pymdownx.smartsymbols" = {}
+"pymdownx.snippets" = {
+  base_path = ["docs"],
+  check_paths = true,
+}
+"pymdownx.superfences" = {
+  custom_fences = [
+    {
+      name = "mermaid",
+      class = "mermaid",
+      format = "pymdownx.superfences.fence_code_format",
+    },
+  ],
+}
+"pymdownx.tabbed" = { alternate_style = true, combine_header_slug = true }
+"pymdownx.tasklist" = { custom_checkbox = true }
+"pymdownx.tilde" = {}

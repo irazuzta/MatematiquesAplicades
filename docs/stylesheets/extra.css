@@ -1,0 +1,74 @@
+/* ------------------------------------------------------------------------- */
+/* Ajustos generals                                                          */
+/* ------------------------------------------------------------------------- */
+
+/* Les fórmules en mode display no han de desplaçar la pàgina cap als costats:
+   si una expressió no hi cap, es fa scroll només dins del bloc de la fórmula. */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* Les taules resum queden més llegibles amb una mica més d'aire. */
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  padding: 0.6rem 0.9rem;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Versió contínua per imprimir (llibre.md)                                  */
+/* ------------------------------------------------------------------------- */
+
+@media print {
+  /* Amaga tota la interfície: capçalera, navegació, taula de continguts,
+     peu, cercador i botons. Només queda el contingut. */
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-sidebar--primary,
+  .md-sidebar--secondary,
+  .md-footer,
+  .md-search,
+  .md-top,
+  .md-nav,
+  .md-content__button,
+  .md-typeset .headerlink {
+    display: none !important;
+  }
+
+  .md-main__inner,
+  .md-content,
+  .md-grid {
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Cada tema comença en una pàgina nova. */
+  .md-typeset h1 {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .md-typeset h1:first-of-type {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+
+  /* Els quadres, les taules i les fórmules no s'han de partir. */
+  .md-typeset .admonition,
+  .md-typeset details,
+  .md-typeset table,
+  .md-typeset pre,
+  .katex-display {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Els títols no s'han de quedar sols al final d'una pàgina. */
+  .md-typeset h2,
+  .md-typeset h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+}
