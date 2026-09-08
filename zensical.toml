@@ -10,6 +10,7 @@ nav = [
     { "1. Taules de freqüència" = "presentacions/01_taules_frequencia.md" },
     { "2. Representacions gràfiques" = "presentacions/02_representacions_grafiques.md" },
     { "3. Mesures de centralitat" = "presentacions/03_mesures_centralitat.md" },
+    { "4. Desviació típica" = "presentacions/04_desviacio_tipica.md" },
   ] },
   { "Exercicis i activitats" = "exercicis/index.md" },
   { "Laboratori" = "laboratori/index.md" },
