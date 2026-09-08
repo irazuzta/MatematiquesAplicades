@@ -11,5 +11,6 @@ conjunt de dades que ja coneixes.
 ## Apartats
 
 1. [Taules de freqüència](01_taules_frequencia.md) — tipus de variable i com resumir-la en una taula.
+2. [Representacions gràfiques](02_representacions_grafiques.md) — sectors, barres, histograma i diagrama de Pareto.
 
 <!-- La resta de blocs es completaran a mesura que els validem. -->
