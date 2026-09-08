@@ -96,5 +96,15 @@ mateixes taules de freqüències del Bloc 1**. També hi afegim un gràfic nou: 
 | Polígon de freqüències | Contínua | Línia sobre les marques de classe |
 | Pareto | Categories ordenades per freqüència | Barres + línia acumulada, per prioritzar |
 
+!!! note "Nota històrica"
+
+    Els gràfics d'aquest bloc no sempre han existit: els va inventar, gairebé tots,
+    una única persona. L'enginyer escocès William Playfair va presentar el diagrama
+    de línies i el de barres al seu *Commercial and Political Atlas* (1786), i el
+    diagrama de sectors al *Statistical Breviary* (1801) —per representar-hi,
+    precisament, com es repartia el territori de l'Imperi Otomà. Playfair defensava
+    que un bon gràfic comunica d'un cop d'ull allò que una taula de números costa
+    molt de veure: la mateixa idea que hem treballat en aquest bloc.
+
 Amb les dades ja representades gràficament, al proper bloc les resumirem amb un sol
 nombre: les **mesures de centralitat**.

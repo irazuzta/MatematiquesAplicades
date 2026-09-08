@@ -139,6 +139,15 @@ poblacions d'un cop d'ull.
 | IQR $=Q_3-Q_1$ | Amplada del 50% central | Mesura de dispersió robusta |
 | Boxplot | Caixa + bigotis + atípics | Visualitzar dispersió, simetria i comparar grups |
 
+!!! note "Nota històrica"
+
+    El diagrama de caixa és, dels que hem vist al curs, el més jove amb diferència:
+    el matemàtic i estadístic John Tukey en va esbossar la idea cap al 1970, però
+    no es va donar a conèixer públicament fins al 1977, al seu llibre *Exploratory
+    Data Analysis* —una obra que va popularitzar la idea de "mirar" les dades
+    gràficament abans de llançar-se a calcular-hi res, exactament l'esperit amb què
+    hem treballat en aquest bloc.
+
 Amb la taula de freqüències, els gràfics i les mesures de centralitat i dispersió ja
 treballats, tenim les eines bàsiques de l'estadística descriptiva. El proper pas del
 curs és la **recta de regressió**, que veurem quan tinguem el material preparat.

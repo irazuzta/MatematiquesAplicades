@@ -129,6 +129,15 @@ típiques.
 | Variança | $s^2$ | Quadrat de les de la variable | Alta |
 | Desviació típica | $s = \sqrt{s^2}$ | Les mateixes que la variable | Alta |
 
+!!! note "Nota històrica"
+
+    El terme **desviació típica** el va encunyar Karl Pearson en unes classes de
+    1893 (publicades el 1894): abans, cada autor feia servir una notació diferent
+    per mesurar la dispersió. La desigualtat que porta el nom de Txebixev té, de
+    fet, dos pares: el matemàtic francès Irénée-Jules Bienaymé en va demostrar una
+    primera versió el 1853, i el rus Pafnuti Txebixev en va publicar la versió
+    general —la que fem servir avui— el 1867.
+
 Al proper bloc treballarem els **percentils, els quartils i el diagrama de caixa**,
 que permeten descriure la dispersió a partir de l'ordre de les dades i detectar
 valors atípics.

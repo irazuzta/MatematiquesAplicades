@@ -219,6 +219,16 @@ transcripció, una de les sis dades "0" s'hagués registrat com "40":
 | Mediana | Només l'ordre de les dades | Baixa | Quantitatives i ordinals |
 | Moda | Només la freqüència | Cap | Qualsevol tipus de variable |
 
+!!! note "Nota històrica"
+
+    El 1906, a una fira de bestiar anglesa, gairebé 800 persones van apostar pel pes
+    d'un bou un cop escorxat. Cap persona hi va encertar exactament, però el
+    científic Francis Galton va observar que la **mediana** de totes les apostes
+    (1.207 lliures) es desviava només un 0,8% del pes real (1.198 lliures): un dels
+    primers exemples documentats del que avui en diem la "saviesa de les masses".
+    Uns anys més tard, el 1895, el matemàtic Karl Pearson va encunyar el terme
+    **moda** per referir-se al valor més freqüent d'una distribució.
+
 Un únic valor de centralitat no diu res sobre com es **dispersen** les dades al seu
 voltant: dues classes poden tenir la mateixa mitjana de notes i, tot i així, una
 tenir-les molt agrupades i l'altra molt escampades. Això és el que veurem al proper

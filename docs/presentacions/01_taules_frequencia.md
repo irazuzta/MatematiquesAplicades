@@ -197,6 +197,15 @@ La solució és agrupar els valors en **intervals** (també anomenats *classes*)
 | Quantitativa discreta | Diagrama de barres (una barra per cada $x_i$) |
 | Quantitativa contínua | Histograma i, opcionalment, polígon de freqüències |
 
+!!! note "Nota històrica"
+
+    La primera taula de freqüències "moderna" no la va fer cap matemàtic, sinó un
+    comerciant de teixits londinenc. El 1662, John Graunt va publicar *Natural and
+    Political Observations Made upon the Bills of Mortality*, on va classificar i
+    comptar els registres setmanals de morts de Londres per causa i per parròquia.
+    Aquest simple gest de comptar i organitzar dades en una taula es considera el
+    naixement de l'estadística descriptiva i de la demografia com a disciplines.
+
 Amb les taules de freqüència ja construïdes, al proper bloc veurem com traduir-les en
 gràfics: quina representació toca a cada tipus de variable i com es construeix un
 histograma a partir dels intervals que acabem de definir.
