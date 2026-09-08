@@ -14,7 +14,15 @@ nav = [
     { "5. Percentils i boxplot" = "presentacions/05_percentils_boxplot.md" },
   ] },
   { "Exercicis i activitats" = "exercicis/index.md" },
-  { "Laboratori" = "laboratori/index.md" },
+  { "Laboratori" = [
+    { "Introducció" = "laboratori/index.md" },
+    { "0. Primer contacte amb les dades" = "laboratori/00_primer_contacte.md" },
+    { "1. Una variable dicotòmica" = "laboratori/01_variable_dicotomica.md" },
+    { "2. Filtrar els mesos d'estiu" = "laboratori/02_filtrar_mesos_estiu.md" },
+    { "3. Taula amb intervals" = "laboratori/03_taula_intervals.md" },
+    { "4. Agrupar per dècades" = "laboratori/04_agrupar_decades.md" },
+    { "5. El primer gràfic" = "laboratori/05_primer_grafic.md" },
+  ] },
 ]
 
 extra_javascript = [
