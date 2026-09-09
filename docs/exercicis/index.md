@@ -1,7 +1,7 @@
 # Exercicis i activitats
 
 Una relació d'exercicis pensats per practicar **a mà, amb paper i bolígraf**, tot
-allò que es treballa als cinc blocs de Presentacions: taules de freqüència, gràfics,
+allò que es treballa als cinc blocs de Teoria: taules de freqüència, gràfics,
 mesures de centralitat, desviació típica i diagrama de caixa. La numeració dels
 exercicis és contínua dins de la relació (1.1, 1.2... fins a 5.6): cada bloc hi té
 el seu propi bloc d'exercicis, numerats en relació amb el bloc corresponent.
@@ -23,4 +23,4 @@ final de cada bloc:
 4. **Desviació típica** (exercicis 4.1–4.6) — variança i desviació típica, i la desigualtat de Txebixev.
 5. **Percentils i boxplot** (exercicis 5.1–5.6) — quartils, rang interquartílic, valors atípics i diagrama de caixa.
 
-*(Relacionat amb: [Presentacions](../presentacions/index.md).)*
+*(Relacionat amb: [Teoria](../teoria/index.md).)*

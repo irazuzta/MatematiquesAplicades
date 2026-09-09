@@ -36,7 +36,7 @@ docs/
   javascripts/katex.js     arrencada de KaTeX
   stylesheets/extra.css    estils propis i regles d'impressió
   assets/dades/            conjunts de dades descarregables (CSV)
-  presentacions/
+  teoria/
     index.md                introducció i llista de blocs
     01_nom.md, 02_nom.md...  blocs de teoria
     llibre.md                versió contínua per imprimir (només inclusions)

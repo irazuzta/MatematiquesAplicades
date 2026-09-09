@@ -13,7 +13,7 @@ manera que el fil no es trenca d'una activitat a la següent.
 
 ## Temes disponibles
 
-- [Presentacions](presentacions/index.md) — la teoria de cada bloc, explicada de manera seguida i amb exemples resolts.
+- [Teoria](teoria/index.md) — la teoria de cada bloc, explicada de manera seguida i amb exemples resolts.
 - [Exercicis i activitats](exercicis/index.md) — relacions d'exercicis per practicar cada bloc.
 - [Laboratori](laboratori/index.md) — activitats amb R i Google Sheets sobre dades reals.
 

@@ -1,6 +1,6 @@
 # Activitat 0 — Primer contacte amb les dades i amb R
 
-*Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
+*Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../teoria/01_taules_frequencia.md)*
 
 [:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat0_Primer_Contacte.pdf){ .md-button }
 
@@ -334,7 +334,7 @@ coincidir amb el `nrow(dades)` que has obtingut a R.
 
 ## Classifica les variables (repàs del Bloc 1)
 
-Abans d'acabar, repassem els [tipus de variable](../presentacions/01_taules_frequencia.md)
+Abans d'acabar, repassem els [tipus de variable](../teoria/01_taules_frequencia.md)
 aplicats a aquest mateix conjunt de dades. Completa la taula:
 
 | Variable | Tipus (qualitativa/quantitativa, nominal/ordinal/discreta/contínua) |

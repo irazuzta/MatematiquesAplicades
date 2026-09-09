@@ -1,4 +1,4 @@
-# Presentacions
+# Teoria
 
 Aquí trobaràs la teoria de cada bloc: els conceptes explicats de manera seguida, amb
 definicions formals, propietats i exemples resolts amb dades numèriques. Cada bloc

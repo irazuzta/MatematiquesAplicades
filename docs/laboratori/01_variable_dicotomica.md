@@ -1,6 +1,6 @@
 # Activitat 1 — Una variable nova: "nit tropical"? (Sí/No)
 
-*Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
+*Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../teoria/01_taules_frequencia.md)*
 
 [:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat1_Variable_Dicotomica.pdf){ .md-button }
 

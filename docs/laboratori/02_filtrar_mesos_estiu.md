@@ -1,6 +1,6 @@
 # Activitat 2 — Filtrar: quedem-nos només amb l'estiu
 
-*Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
+*Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../teoria/01_taules_frequencia.md)*
 
 [:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat2_Filtrar_Mesos_Estiu.pdf){ .md-button }
 

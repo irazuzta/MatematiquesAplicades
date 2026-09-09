@@ -1,6 +1,6 @@
 # Activitat 4 — Agrupar per dècades: com ha evolucionat el fenomen?
 
-*Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
+*Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../teoria/01_taules_frequencia.md)*
 
 [:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat4_Agrupar_Decades.pdf){ .md-button }
 
