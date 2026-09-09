@@ -5,6 +5,8 @@ Activitats pas a pas per treballar l'estadística amb eines reals: **RStudio** i
 diari de temperatures de l'estació de Nulles/Valls—, de manera que cada activitat
 reutilitza el que ja saps fer i hi afegeix una eina o un càlcul nou.
 
+[:material-database: Descarrega el conjunt de dades (nulles_dades_climatiques_diaries.txt)](../assets/dades/nulles_dades_climatiques_diaries.txt){ .md-button }
+
 ## Apartats
 
 0. [Primer contacte amb les dades](00_primer_contacte.md) — carregar el registre de Nulles/Valls a R i a Sheets, i classificar-ne les variables.
