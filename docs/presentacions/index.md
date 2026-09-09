@@ -8,6 +8,8 @@ Treballem sempre amb el mateix fil conductor —les nits tropicals a Nulles— p
 eina nova (una taula de freqüències, un gràfic, un estadístic...) s'apliqui sobre un
 conjunt de dades que ja coneixes.
 
+[:material-file-pdf-box: Descarrega la presentació introductòria: què és l'estadística? (PDF)](../assets/presentacions/que_es_estadistica.pdf){ .md-button }
+
 ## Apartats
 
 1. [Taules de freqüència](01_taules_frequencia.md) — tipus de variable i com resumir-la en una taula.

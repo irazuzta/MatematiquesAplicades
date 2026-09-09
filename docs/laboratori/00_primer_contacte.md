@@ -2,6 +2,8 @@
 
 *Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
 
+[:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat0_Primer_Contacte.pdf){ .md-button }
+
 ## Les nits tropicals, ara i abans
 
 Al llarg d'aquest bloc (i dels següents) treballarem sempre amb el mateix conjunt de

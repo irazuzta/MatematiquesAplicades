@@ -2,6 +2,8 @@
 
 *Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
 
+[:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat3_Taula_Intervals.pdf){ .md-button }
+
 ## Context
 
 Fins ara hem reduït la temperatura mínima (`TN`) a una variable dicotòmica (nit

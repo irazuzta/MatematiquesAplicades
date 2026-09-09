@@ -2,6 +2,8 @@
 
 *Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
 
+[:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat1_Variable_Dicotomica.pdf){ .md-button }
+
 ## Context
 
 Recordem d'on venim: treballem amb el registre diari de temperatures i pluviometria

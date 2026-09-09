@@ -2,6 +2,8 @@
 
 *Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
 
+[:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat2_Filtrar_Mesos_Estiu.pdf){ .md-button }
+
 ## Context
 
 Seguim treballant amb el registre diari de Nulles/Valls (1950–2025) i amb la nostra

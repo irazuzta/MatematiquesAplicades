@@ -2,6 +2,8 @@
 
 *Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
 
+[:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat4_Agrupar_Decades.pdf){ .md-button }
+
 ## Context
 
 Ja sabem calcular, per a qualsevol subconjunt de dades, quantes nits tropicals hi ha

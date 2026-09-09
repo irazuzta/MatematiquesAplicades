@@ -2,6 +2,8 @@
 
 *Laboratori · Relacionat amb [Bloc 1 — Taules de freqüència](../presentacions/01_taules_frequencia.md)*
 
+[:material-file-pdf-box: Descarrega l'activitat (PDF)](../assets/laboratori/Activitat5_Primer_Grafic.pdf){ .md-button }
+
 ## Context
 
 Hem arribat al final del recorregut d'aquest bloc: a l'Activitat 4 vam obtenir la
