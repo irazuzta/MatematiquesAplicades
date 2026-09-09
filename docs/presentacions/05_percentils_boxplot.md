@@ -1,5 +1,7 @@
 # Bloc 5 — Percentils, quartils i el diagrama de caixa
 
+[:material-file-pdf-box: Descarrega la presentació (PDF)](../assets/presentacions/Bloc5_Teoria_Percentils_Boxplot.pdf){ .md-button }
+
 Al [Bloc 3](03_mesures_centralitat.md) vam definir la mediana com el valor que deixa
 el 50% de les dades per sota i el 50% per sobre. Aquesta idea es pot generalitzar: el
 **percentil $p$** és el valor que deixa aproximadament el $p\%$ de les dades per sota

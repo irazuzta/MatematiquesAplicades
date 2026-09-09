@@ -1,5 +1,7 @@
 # Bloc 3 — Mesures de centralitat
 
+[:material-file-pdf-box: Descarrega la presentació (PDF)](../assets/presentacions/Bloc3_Teoria_Mesures_Centralitat.pdf){ .md-button }
+
 Amb les taules de freqüències i els gràfics (Blocs 1 i 2) descrivim tota la
 distribució de les dades. Sovint, però, interessa resumir-la en un sol valor que
 sigui representatiu. Les tres mesures de centralitat més habituals són la

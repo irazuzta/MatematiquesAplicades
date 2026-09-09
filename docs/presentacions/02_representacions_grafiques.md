@@ -1,5 +1,7 @@
 # Bloc 2 — Representacions gràfiques
 
+[:material-file-pdf-box: Descarrega la presentació (PDF)](../assets/presentacions/Bloc2_Teoria_Representacions_Grafiques.pdf){ .md-button }
+
 Al [Bloc 1](01_taules_frequencia.md) vam veure quin gràfic li correspon a cada tipus
 de variable:
 

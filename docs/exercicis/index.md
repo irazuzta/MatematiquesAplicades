@@ -10,7 +10,7 @@ Els enunciats es publiquen només en PDF, pensats per imprimir o per treballar
 directament sobre el document. Les solucions **no es publiquen aquí**: si el
 professor les facilita, seran per una altra via.
 
-[:material-file-pdf-box: Descarrega la relació d'exercicis (PDF)](../assets/exercicis/Relacio_Exercicis_Blocs1_5.pdf)
+[:material-file-pdf-box: Descarrega la relació d'exercicis (PDF)](../assets/exercicis/Exercicis_Practica_Blocs1_5.pdf)
 
 ## Apartats
 

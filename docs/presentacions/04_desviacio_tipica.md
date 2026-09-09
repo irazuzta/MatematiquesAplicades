@@ -1,5 +1,7 @@
 # Bloc 4 — Mesures de dispersió: la desviació típica
 
+[:material-file-pdf-box: Descarrega la presentació (PDF)](../assets/presentacions/Bloc4_Teoria_Desviacio_Tipica.pdf){ .md-button }
+
 Una classe amb nota mitjana 5 pot donar-se de maneres molt diferents: la meitat pot
 treure un 10 i l'altra meitat un 0, tothom pot treure exactament un 5, o les notes es
 poden repartir de manera uniforme entre 0 i 10. **Mateixa mitjana, situacions

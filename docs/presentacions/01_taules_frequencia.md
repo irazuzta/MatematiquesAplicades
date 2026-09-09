@@ -1,5 +1,7 @@
 # Bloc 1 — Tipus de dades i taules de freqüència
 
+[:material-file-pdf-box: Descarrega la presentació (PDF)](../assets/presentacions/Bloc1_Teoria_Taules_Frequencia.pdf){ .md-button }
+
 Abans de calcular res, cal saber **de quin tipus de dades disposem**: el tipus de
 variable determina si té sentit ordenar-la, acumular-la o agrupar-la en intervals, i
 per tant quines eines estadístiques hi podem aplicar. Aquest primer bloc estableix
