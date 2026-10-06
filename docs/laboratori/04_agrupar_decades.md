@@ -6,18 +6,9 @@
 
 ## Context
 
-Ja sabem calcular, per a qualsevol subconjunt de dades, quantes nits tropicals hi ha
-hagut (Activitats 1–2) i com es distribueix la temperatura mínima en intervals
-(Activitat 3). Ara farem el pas que dona sentit a tot el projecte: en lloc de mirar
-un any concret o un període arbitrari, **agruparem totes les dades d'estiu
-(1950–2025) per dècades** i les compararem entre si. Això ens permetrà respondre la
-pregunta de fons: *les nits tropicals, han anat a més al llarg dels darrers 75 anys a
-Nulles?*
+Ja sabem calcular, per a qualsevol subconjunt de dades, quantes nits tropicals hi ha hagut (Activitats 1–2) i com es distribueix la temperatura mínima en intervals (Activitat 3). Ara farem el pas que dona sentit a tot el projecte: en lloc de mirar un any concret o un període arbitrari, **agruparem totes les dades d'estiu (1950–2025) per dècades** i compararem-les entre si. Això ens permetrà respondre la pregunta de fons: *les nits tropicals, han anat a més al llarg dels darrers 75 anys a Nulles?*
 
-Necessitarem, doncs, una nova variable: la **dècada** a la qual pertany cada any
-(1950, 1960, 1970... fins a 2020). No existeix directament a l'arxiu original —
-l'haurem de calcular a partir de `ANY`—, de la mateixa manera que a l'Activitat 1 vam
-calcular "nit tropical" a partir de `TN`.
+Necessitarem, doncs, una nova variable: la **dècada** a la qual pertany cada any (1950, 1960, 1970... fins a 2020). No existeix directament a l'arxiu original —l'haurem de calcular a partir de `ANY`—, de la mateixa manera que a l'Activitat 1 vam calcular "nit tropical" a partir de `TN`.
 
 ## Objectius
 
@@ -26,11 +17,13 @@ calcular "nit tropical" a partir de `TN`.
 - Construir la taula de freqüències final del projecte: nombre (i percentatge) de nits tropicals per dècada.
 - A Sheets, introduir les **taules dinàmiques**, l'eina pensada exactament per a aquest tipus de resum "agrupa i calcula".
 
-## Pas 1 — Calcular la dècada: divisió entera
+## Part A — Treballem amb R
 
-Volem que l'any 1987 es converteixi en 1980, que 1953 es converteixi en 1950, que
-2024 es converteixi en 2020, etc. Aquest càlcul es pot fer amb l'operador de
-**divisió entera** de R, `%/%`:
+Primer fem tot el recorregut amb **R** (RStudio). A la Part B repetirem les mateixes operacions amb **Google Sheets**.
+
+### R · Pas 1 — Calcular la dècada: divisió entera
+
+Volem que l'any 1987 es converteixi en 1980, que 1953 es converteixi en 1950, que 2024 es converteixi en 2020, etc. Aquest càlcul es pot fer amb l'operador de **divisió entera** de R, `%/%`:
 
 ```r
 estiu$decada <- (estiu$ANY %/% 10) * 10
@@ -43,14 +36,11 @@ head(estiu$decada, 3)
 - `(estiu$ANY %/% 10) * 10`: dividim per 10 (perdent l'últim dígit de l'any) i tornem a multiplicar per 10 (recuperant els zeros al final). El resultat: `1987 → 198 → 1980`. És un "truc" aritmètic molt utilitzat per arrodonir cap avall a la desena, centena, etc.
 - `estiu$decada <- ...`: com ja hem fet diverses vegades, afegim aquest resultat com una columna nova a la taula `estiu` (la que ja teníem filtrada per mesos d'estiu, de l'Activitat 2).
 
-*(Nota: si `ANY` fos negatiu això no funcionaria igual, però per a anys de calendari
-com els nostres no hi ha cap problema.)*
+*(Nota: si `ANY` fos negatiu això no funcionaria igual, però per a anys de calendari com els nostres no hi ha cap problema.)*
 
-## Pas 2 — Resumir per grups amb `aggregate()`
+### R · Pas 2 — Resumir per grups amb `aggregate()`
 
-Fins ara, per canviar de subconjunt de dades (un any, un període...) havíem de
-tornar a escriure `subset()` cada vegada. La funció `aggregate()` fa una cosa més
-potent: **calcula un resum per a cada grup, tot d'una vegada**.
+Fins ara, per canviar de subconjunt de dades (un any, un període...) havíem de tornar a escriure `subset()` cada vegada. La funció `aggregate()` fa una cosa més potent: **calcula un resum per a cada grup, tot d'una vegada**.
 
 ```r
 aggregate(tropical ~ decada, data = estiu, FUN = sum)
@@ -63,19 +53,13 @@ aggregate(tropical ~ decada, data = estiu, FUN = sum)
 - `FUN = sum`: la funció que s'ha d'aplicar dins de cada grup. Aquí volem la **suma** dels `TRUE` (recorda el mini manual de l'Activitat 1: sumar un vector de `TRUE`/`FALSE` compta els `TRUE`). Si volguéssim la mitjana en comptes de la suma, escriuríem `FUN = mean`.
 - El resultat és una taula petita, amb una fila per dècada i dues columnes: `decada` i el resum (`tropical`, ara ja reanomenat implícitament com la suma).
 
-Amb la mateixa idea, podem obtenir també el nombre total de nits d'estiu
-registrades a cada dècada (per calcular després el percentatge):
+Amb la mateixa idea, podem obtenir també el nombre total de nits d'estiu registrades a cada dècada (per calcular després el percentatge):
 
 ```r
 aggregate(tropical ~ decada, data = estiu, FUN = length)
 ```
 
-**Explicació:** `length()` no suma els `TRUE`, sinó que compta **quantes files** hi
-ha a cada grup (tant si són `TRUE` com `FALSE`). Necessitem aquest número perquè,
-com veurem a la taula final, **no totes les dècades tenen el mateix nombre d'anys**:
-1950–2019 en tenen 10 cadascuna, però 2020–2025 només en té 6 (encara no ha
-acabat!). Per això, per poder comparar dècades de manera justa, cal fer servir el
-**percentatge** i no el nombre absolut de nits tropicals.
+**Explicació:** `length()` no suma els `TRUE`, sinó que compta **quantes files** hi ha a cada grup (tant si són `TRUE` com `FALSE`). Necessitem aquest número perquè, com veurem a la taula final amb la dècada de 2020, **no totes les dècades tenen el mateix nombre d'anys**: 1950–2019 en tenen 10 cadascuna, però 2020–2025 només en té 6 (encara no ha acabat!). Per això, per poder comparar dècades de manera justa, cal fer servir el **percentatge** i no el nombre absolut de nits tropicals.
 
 !!! note "Mini manual R: combinant els dos resultats"
 
@@ -94,28 +78,26 @@ acabat!). Per això, per poder comparar dècades de manera justa, cal fer servir
     resum
     ```
 
-    - `data.frame(...)`: la funció que crea una taula de dades des de zero, indicant
-      columna per columna. Aquí en construïm una de nova (`resum`) combinant els
-      resultats dels dos `aggregate()` anteriors.
-    - `resum$percentatge <- round(100 * resum$n_tropicals / resum$n_total, 2)`:
-      calculem el percentatge (n_tropicals dividit pel total, multiplicat per 100) i
-      l'arrodonim a 2 decimals amb `round(valor, decimals)`.
+    **Explicació:**
 
-## Pas 3 — A Google Sheets: taula dinàmica (*pivot table*)
+    - `data.frame(...)`: la funció que crea una taula de dades des de zero, indicant columna per columna. Aquí en construïm una de nova (`resum`) combinant els resultats dels dos `aggregate()` anteriors.
+    - `resum$percentatge <- round(100 * resum$n_tropicals / resum$n_total, 2)`: calculem el percentatge (`n_tropicals` dividit pel total, multiplicat per 100) i l'arrodonim a 2 decimals amb `round(valor, decimals)`.
 
-Fins ara, a Sheets hem fet servir fórmules soltes (`COMPTA.SI`, `SI`, `FREQÜÈNCIA`,
-`FILTRA`). Per a un resum "agrupa per dècada i calcula", Sheets té una eina feta
-expressament per a això: la **taula dinàmica**.
+## Part B — Treballem amb Google Sheets
 
-1. Amb les dades d'estiu (i les columnes `tropical` i `decada` ja calculades com a l'Activitat 1 i el Pas 1 d'aquí), selecciona tot el rang i vés a **Inserir → Taula dinàmica**.
+Ara fem el mateix amb el full de càlcul, partint de les dades que ja vas importar a l'Activitat 0.
+
+### Sheets · Pas 1 — Taula dinàmica (*pivot table*)
+
+Fins ara, a Sheets hem fet servir fórmules soltes (`COMPTA.SI`, `SI`, `FREQÜÈNCIA`, `FILTRA`). Per a un resum "agrupa per dècada i calcula", Sheets té una eina feta expressament per a això: la **taula dinàmica**.
+
+1. Amb les dades d'estiu (i les columnes `tropical` i `decada` ja calculades (a Sheets, amb `SI` com a l'Activitat 1, i amb una fórmula d'arrodoniment cap avall per a la dècada, p. ex. `=ENT(A2/10)*10`)), selecciona tot el rang i vés a **Inserir → Taula dinàmica**.
 2. A la finestra de configuració:
-    - **Files**: arrossega-hi el camp `decada`.
-    - **Valors**: arrossega-hi el camp `tropical` **dues vegades**: un cop configurat com **RECOMPTE** (per obtenir el total de nits registrades a la dècada) i un altre cop configurat com **SUMA** (si `tropical` és una columna de VERTADER/FALS —o d'1/0—, sumar-la dona directament el nombre de nits tropicals).
+   - **Files**: arrossega-hi el camp `decada`.
+   - **Valors**: arrossega-hi el camp `tropical` **dues vegades**: un cop configurat com **RECOMPTE** (per obtenir el total de nits registrades a la dècada) i un altre cop configurat com **SUMA** (si `tropical` és una columna de VERTADER/FALS —o d'1/0—, sumar-la dona directament el nombre de nits tropicals).
 3. Afegeix una columna de fórmula al costat per calcular el percentatge (SUMA dividit per RECOMPTE, multiplicat per 100).
 
-La taula dinàmica actualitza automàticament els resultats si canvien les dades
-d'origen, sense que hagis de tornar a escriure cap fórmula: aquesta és la seva gran
-avantatge respecte a construir-ho tot amb `COMPTA.SI` fila a fila.
+La taula dinàmica actualitza automàticament els resultats si canvien les dades d'origen, sense que hagis de tornar a escriure cap fórmula: aquesta és la seva gran avantatge respecte a construir-ho tot amb `COMPTA.SI` fila a fila.
 
 ## La taula completa: nits tropicals per dècada (estiu, 1950–2025)
 
@@ -130,19 +112,9 @@ avantatge respecte a construir-ho tot amb `COMPTA.SI` fila a fila.
 | 2010 | 2010–2019 (10 anys) | 1.220 | 221 | 18,11% |
 | 2020 | 2020–2025 (**només 6 anys**) | 732 | 206 | 28,14% |
 
-**Interpretació:** el percentatge de nits tropicals a l'estiu passa d'un 8,11% a la
-dècada de 1950 a un 28,14% en el que portem de la dècada de 2020: **més del
-triple**. La tendència no és perfectament monòtona (fixa't que la dècada de 1970 té
-el valor més baix de tota la sèrie, per sota fins i tot de la de 1960), però la
-direcció general, especialment a partir de 1990, és clarament ascendent.
+**Interpretació:** el percentatge de nits tropicals a l'estiu passa d'un 8,11% a la dècada de 1950 a un 28,14% en el que portem de la dècada de 2020: **més del triple**. La tendència no és perfectament monòtona (fixa't que la dècada de 1970 té el valor més baix de tota la sèrie, per sota fins i tot de la de 1960), però la direcció general, especialment a partir de 1990, és clarament ascendent.
 
-**Advertència metodològica important:** la dècada de 2020 només té 6 anys
-(2020–2025) enfront dels 10 de la resta. Justament per això hem calculat sempre el
-**percentatge** ($f_i$) i no el nombre absolut: comparar 206 nits (6 anys) amb 221
-nits (10 anys) seria enganyós, però comparar 28,14% amb 18,11% sí que és una
-comparació justa. Aquest és un exemple real de per què, en estadística, gairebé
-sempre és més honest treballar amb freqüències relatives que amb absolutes quan els
-grups no tenen la mateixa mida.
+**Advertència metodològica important:** la dècada de 2020 només té 6 anys (2020–2025) enfront dels 10 de la resta. Justament per això hem calculat sempre el **percentatge** ($f_i$) i no el nombre absolut: comparar 206 nits (6 anys) amb 221 nits (10 anys) seria enganyós, però comparar 28,14% amb 18,11% sí que és una comparació justa. Aquest és un exemple real de per què, en estadística, gairebé sempre és més honest treballar amb freqüències relatives que amb absolutes quan els grups no tenen la mateixa mida.
 
 ## Per practicar
 
@@ -160,6 +132,4 @@ c) Per què creus que NO té sentit calcular la freqüència absoluta **acumulad
 - Hem après per què cal comparar amb **percentatges** i no amb valors absoluts quan els grups (aquí, les dècades) no tenen la mateixa mida.
 - A Sheets, hem introduït la **taula dinàmica** com a eina natural per a aquest tipus de resum agrupat.
 
-**Següent pas (Activitat 5):** representarem aquesta taula amb el nostre primer
-gràfic (un diagrama de barres), tancant el cicle "dades → taula → gràfic" amb què
-hem començat el curs.
+**Següent pas (Activitat 5):** representarem aquesta taula amb el nostre primer gràfic (un diagrama de barres), tancant el cicle "dades → taula → gràfic" amb què hem començat el curs.

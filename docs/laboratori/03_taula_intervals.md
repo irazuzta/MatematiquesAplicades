@@ -6,21 +6,11 @@
 
 ## Context
 
-Fins ara hem reduït la temperatura mínima (`TN`) a una variable dicotòmica (nit
-tropical: Sí/No). Això és útil per contar quantes nits superen els 20 ºC, però ens
-fa perdre molta informació: no és el mateix una nit de 20,1 ºC que una de 24,5 ºC, i
-totes dues compten igual com a "Sí".
+Fins ara hem reduït la temperatura mínima (`TN`) a una variable dicotòmica (nit tropical: Sí/No). Això és útil per contar quantes nits superen els 20 ºC, però ens fa perdre molta informació: no és el mateix una nit de 20,1 ºC que una de 24,5 ºC, i totes dues compten igual com a "Sí".
 
-En aquesta activitat tornarem a `TN` tal com és: una **variable quantitativa
-contínua**. Com vam veure al Bloc 1 amb l'exemple de les alçades dels 30 alumnes,
-quan una variable és contínua **no té sentit fer una fila per cada valor exacte**
-(gairebé cada nit té una TN lleugerament diferent de les altres): cal **agrupar en
-intervals**.
+En aquesta activitat tornarem a `TN` tal com és: una **variable quantitativa contínua**. Com vam veure al Bloc 1 amb l'exemple de les alçades dels 30 alumnes, quan una variable és contínua **no té sentit fer una fila per cada valor exacte** (gairebé cada nit té una TN lleugerament diferent de les altres): cal **agrupar en intervals**.
 
-Per tenir un conjunt de dades manejable i recent, en aquesta activitat treballarem
-amb **les nits d'estiu del període 2020–2025** (6 anys × 122 nits = 732 nits en
-total), el mateix subconjunt que vam obtenir filtrant a l'Activitat 2 (però ara
-afegint també un filtre per anys).
+Per tenir un conjunt de dades manejable i recent, en aquesta activitat treballarem amb **les nits d'estiu del període 2020–2025** (6 anys × 122 nits = 732 nits en total), el mateix subconjunt que vam obtenir filtrant a l'Activitat 2 (però ara afegint també un filtre per anys).
 
 ## Objectius
 
@@ -29,9 +19,11 @@ afegint també un filtre per anys).
 - Conèixer la funció `cut()` de R, que assigna automàticament cada valor al seu interval.
 - Introduir la funció `FREQÜÈNCIA` de Google Sheets (una fórmula matricial, diferent de les que hem vist fins ara).
 
-## Pas 1 — Preparar el subconjunt de dades
+## Part A — Treballem amb R
 
-### A R
+Primer fem tot el recorregut amb **R** (RStudio). A la Part B repetirem les mateixes operacions amb **Google Sheets**.
+
+### R · Pas 1 — Preparar el subconjunt de dades
 
 ```r
 recent <- subset(dades, ANY >= 2020 & MES %in% c(6, 7, 8, 9))
@@ -44,30 +36,13 @@ range(recent$TN)   # el valor mínim i màxim de TN en aquest període
 - `ANY >= 2020 & MES %in% c(6, 7, 8, 9)`: aquí combinem **dues condicions** amb l'operador `&` ("i"): l'any ha de ser 2020 o posterior, **i** el mes ha de ser un dels quatre d'estiu. Totes dues s'han de complir alhora perquè la fila es quedi.
 - `range(vector)`: una funció nova que retorna, en un sol resultat, el valor mínim i el màxim d'un vector. Ens servirà per decidir com construir els intervals: `range(recent$TN)` dona 8,5 ºC de mínim i 24,5 ºC de màxim en aquest període, així que ja podem triar uns límits d'interval que ho cobreixin tot.
 
-### A Google Sheets
+### R · Pas 2 — Triar els intervals
 
-Amb `FILTRA` (ja el vam veure a l'Activitat 2), ara amb dues condicions combinades
-amb `*` (que fa la mateixa funció que `&` a R: només val 1 —"cert"— si totes dues
-comparacions valen 1 alhora):
-
-```
-=FILTRA(A2:F27760; (A2:A27760>=2020) * ((B2:B27760=6)+(B2:B27760=7)+(B2:B27760=8)+(B2:B27760=9)))
-```
-
-## Pas 2 — Triar els intervals
-
-Igual que al Bloc 1 (recorda l'exemple de les alçades, intervals de 5 cm des de 155
-cm), hem de triar una **amplitud** i un **punt de partida** que cobreixi tot el rang
-observat (8,5 a 24,5 ºC, segons el `range()` del Pas 1). Per a la temperatura mínima
-d'estiu, uns intervals raonables són d'**amplitud 2 ºC**, començant a **8 ºC** (per
-sota del valor mínim observat):
+Igual que al Bloc 1 (recorda l'exemple de les alçades, intervals de 5 cm des de 155 cm), hem de triar una **amplitud** i un **punt de partida** que cobreixi tot el rang observat (8,5 a 24,5 ºC, segons el `range()` del Pas 1). Per a la temperatura mínima d'estiu, uns intervals raonables són d'**amplitud 2 ºC**, començant a **8 ºC** (per sota del valor mínim observat):
 
 $$[8,10),\ [10,12),\ [12,14),\ [14,16),\ [16,18),\ [18,20),\ [20,22),\ [22,24),\ [24,26)$$
 
-Fixa't que l'interval $[20,22)$ és exactament el que separa les nits tropicals (TN ≥
-20) de les que no ho són: la línia divisòria de la nostra variable dicotòmica de les
-Activitats 1 i 2 coincideix amb un límit d'interval, cosa que no és casualitat: hem
-triat l'amplitud i el punt de partida precisament perquè fos així.
+Fixa't que l'interval $[20,22)$ és exactament el que separa les nits tropicals (TN ≥ 20) de les que no ho són: la línia divisòria de la nostra variable dicotòmica de les Activitats 1 i 2 coincideix amb un límit d'interval, cosa que no és casualitat: hem triat l'amplitud i el punt de partida precisament perquè fos així.
 
 !!! note "Compte: els intervals han de cobrir tot el rang de dades"
 
@@ -81,7 +56,7 @@ triat l'amplitud i el punt de partida precisament perquè fos així.
     sempre ha de ser mirar el `range()` de les dades *abans* de triar els límits
     dels intervals.
 
-## Pas 3 — Assignar cada valor al seu interval, amb `cut()`
+### R · Pas 3 — Assignar cada valor al seu interval, amb `cut()`
 
 ```r
 recent$interval <- cut(recent$TN, breaks = seq(8, 26, by = 2), right = FALSE)
@@ -98,10 +73,7 @@ table(recent$interval)
 
 !!! note "Mini manual R: de $n_i$ a $F_i$ amb `cumsum()`"
 
-    Un cop tenim les freqüències absolutes amb `table()`, per obtenir les
-    **acumulades** ($N_i$, $F_i$) no cal fer-ho a mà: R té la funció `cumsum()`
-    ("suma acumulada"), que retorna, per a cada posició, la suma de tots els
-    valors fins aquell punt:
+    Un cop tenim les freqüències absolutes amb `table()`, per obtenir les **acumulades** ($N_i$, $F_i$) no cal fer-ho a mà: R té la funció `cumsum()` ("suma acumulada"), que retorna, per a cada posició, la suma de tots els valors fins aquell punt:
 
     ```r
     n_i <- table(recent$interval)
@@ -110,17 +82,23 @@ table(recent$interval)
     F_i <- cumsum(f_i)        # freqüència relativa acumulada
     ```
 
-    Per exemple, si `n_i` fos `c(3, 5, 2)`, `cumsum(n_i)` donaria `c(3, 8, 10)`: el
-    primer valor no canvia, el segon és 3+5, el tercer és 3+5+2. És exactament la
-    mateixa lògica que quan omplim a mà la columna $N_i$ d'una taula de
-    freqüències, però calculada automàticament.
+    Per exemple, si `n_i` fos `c(3, 5, 2)`, `cumsum(n_i)` donaria `c(3, 8, 10)`: el primer valor no canvia, el segon és 3+5, el tercer és 3+5+2. És exactament la mateixa lògica que quan omplim a mà la columna $N_i$ d'una taula de freqüències, però calculada automàticament.
 
-## Pas 4 — La funció `FREQÜÈNCIA` a Google Sheets
+## Part B — Treballem amb Google Sheets
 
-A diferència de `COMPTA.SI` (que aplicàvem un cop per cada categoria), `FREQÜÈNCIA`
-calcula **totes les freqüències d'un cop**, a partir dels límits superiors dels
-intervals. És una fórmula una mica especial: és una **fórmula matricial** (retorna
-diversos resultats alhora, un per fila).
+Ara fem el mateix amb el full de càlcul, partint de les dades que ja vas importar a l'Activitat 0.
+
+### Sheets · Pas 1 — Preparar el subconjunt de dades
+
+Amb `FILTRA` (ja el vam veure a l'Activitat 2), ara amb dues condicions combinades amb `*` (que fa la mateixa funció que `&` a R: només val 1 —"cert"— si totes dues comparacions valen 1 alhora):
+
+```
+=FILTRA(A2:F27760; (A2:A27760>=2020) * ((B2:B27760=6)+(B2:B27760=7)+(B2:B27760=8)+(B2:B27760=9)))
+```
+
+### Sheets · Pas 2 — La funció `FREQÜÈNCIA`
+
+A diferència de `COMPTA.SI` (que aplicàvem un cop per cada categoria), `FREQÜÈNCIA` calcula **totes les freqüències d'un cop**, a partir dels límits superiors dels intervals. És una fórmula una mica especial: és una **fórmula matricial** (retorna diversos resultats alhora, un per fila).
 
 1. En una columna auxiliar, escriu els límits superiors dels intervals: `10`, `12`, `14`, `16`, `18`, `20`, `22`, `24`, `26`.
 2. Selecciona un rang buit de 9 cel·les (una per cada interval) a la columna del costat.
@@ -132,13 +110,12 @@ diversos resultats alhora, un per fila).
 
 **Explicació:**
 
-- `FREQÜÈNCIA(dades; límits)`: compta, per a cada límit de la llista, quants valors de `dades` són **més grans que el límit anterior i menors o iguals que aquest**. És a dir, fa servir el conveni $(a, b]$ (a diferència del `cut()` de R, que hem configurat com $[a, b)$): amb temperatures amb un decimal com les nostres, aquesta petita diferència de conveni gairebé mai canvia el resultat pràctic, però és important saber que existeix.
+- `FREQÜÈNCIA(dades; límits)`: compta, per a cada límit de la llista, quants valors de `dades` són **més grans que el límit anterior i menors o iguals que aquest**. És a dir, fa servir el conveni $(a, b]$ (a diferència del `cut()` de R, que hem configurat com $[a, b)$): com que les nostres temperatures tenen un sol decimal, molts valors cauen exactament sobre un límit (per exemple, hi ha 55 nits amb TN = 20,0 ºC) i la diferència de conveni **sí que canvia els recomptes** (vegeu la nota després de la taula).
 - `{10;12;14;16;18;20;22;24;26}`: una manera d'escriure directament una llista de valors dins la fórmula, sense necessitat d'una columna auxiliar (els punts i coma separen els valors).
 
 ## La taula completa (nits d'estiu, 2020–2025, n = 732)
 
-Amb qualsevol de les dues eines hauries d'arribar a una taula molt semblant a
-aquesta:
+Amb R (`cut()` amb `right = FALSE`) hauries d'arribar a aquesta taula:
 
 | Interval | Marca de classe | $n_i$ | $f_i$ | $f_i$ (%) |
 |---|---|---|---|---|
@@ -153,16 +130,17 @@ aquesta:
 | [24, 26) | 25 | 2 | 0,003 | 0,3% |
 | **Total** | — | **732** | **1,00** | **100%** |
 
-**Interpretació:** l'interval més freqüent és $[18,20)$, just per sota del llindar de
-nit tropical: és a dir, moltíssimes nits d'estiu recents s'hi acosten sense
-arribar-hi. Si sumem els tres intervals a partir de 20 ºC (139 + 65 + 2 = 206 nits),
-recuperem exactament el nombre de nits tropicals del període 2020–2025 que ja
-coneixíem per l'enfocament dicotòmic —una bona manera de comprovar que els dos
-mètodes són coherents entre si. Fixa't també que les tres nits més fredes de tot el
-període (per sota de 14 ºC, als intervals $[8,10)$, $[10,12)$ i $[12,14)$) només
-sumen 47 nits: són poques, però un conjunt d'intervals que no les cobrís les hauria
-fetes desaparèixer silenciosament de la taula, en comptes de mostrar-les com el que
-són —nits d'estiu, però fresques.
+**Interpretació:** l'interval més freqüent és $[18,20)$, just per sota del llindar de nit tropical: és a dir, moltíssimes nits d'estiu recents s'hi acosten sense arribar-hi. Si sumem els tres intervals a partir de 20 ºC (139 + 65 + 2 = 206 nits), recuperem exactament el nombre de nits tropicals del període 2020–2025 que ja coneixíem per l'enfocament dicotòmic —una bona manera de comprovar que els dos mètodes són coherents entre si. Fixa't també que les tres nits més fredes de tot el període (per sota de 14 ºC, als intervals $[8,10)$, $[10,12)$ i $[12,14)$) només sumen 47 nits: són poques, però un conjunt d'intervals que no les cobrís les hauria fetes desaparèixer silenciosament de la taula, en comptes de mostrar-les com el que són —nits d'estiu, però fresques.
+
+!!! warning "Compte: `FREQÜÈNCIA` no dona exactament aquesta taula"
+
+    Amb els límits `{10;12;…;26}`, `FREQÜÈNCIA` fa servir el conveni $(a, b]$ i els recomptes
+    surten diferents: 9, 12, 37, 124, 173, 226, 120, 30 i 1 (en lloc de 5, 11, 31, 95,
+    136, 248, 139, 65 i 2). Per exemple, les 55 nits amb TN = 20,0 ºC (que sí que són
+    tropicals) queden a l'interval $(18,20]$ i no a $[20,22)$; amb `FREQÜÈNCIA` només
+    se'n comptarien 151 de tropicals, no 206. Com que `TN` té un sol decimal, per
+    obtenir els mateixos recomptes que amb `cut()` pots fer servir com a límits els
+    valors menys 0,1 (9,9; 11,9; …; 25,9), ja que $x<10$ equival a $x\le 9{,}9$.
 
 ## Per practicar
 
@@ -180,6 +158,4 @@ c) Si en comptes d'amplitud 2 haguéssim triat amplitud 5 (com a l'exemple de le
 - Hem comprovat que l'enfocament amb intervals i l'enfocament dicotòmic (Activitats 1–2) són coherents: sumant els intervals a partir de 20 ºC recuperem el recompte de nits tropicals.
 - Hem après per què els intervals han de cobrir sempre tot el rang observat (`range()` abans de triar els límits), per no deixar dades fora de la taula sense adonar-nos-en.
 
-**Següent pas (Activitat 4):** agruparem les dades per **dècada** (no només per any
-concret) i compararem com ha evolucionat el nombre de nits tropicals al llarg de
-tota la sèrie 1950–2025.
+**Següent pas (Activitat 4):** agruparem les dades per **dècada** (no només per any concret) i compararem com ha evolucionat el nombre de nits tropicals al llarg de tota la sèrie 1950–2025.

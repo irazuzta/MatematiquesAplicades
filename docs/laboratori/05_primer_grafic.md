@@ -6,10 +6,7 @@
 
 ## Context
 
-Hem arribat al final del recorregut d'aquest bloc: a l'Activitat 4 vam obtenir la
-taula que resumeix tot el projecte —el percentatge de nits tropicals a Nulles,
-dècada rere dècada, de 1950 a 2025—. Ara falta l'últim pas, el que dona sentit
-visual a tota la feina anterior: **representar aquesta taula amb un gràfic**.
+Hem arribat al final del recorregut d'aquest bloc: a l'Activitat 4 vam obtenir la taula que resumeix tot el projecte —el percentatge de nits tropicals a Nulles, dècada rere dècada, de 1950 a 2025—. Ara falta l'últim pas, el que dona sentit visual a tota la feina anterior: **representar aquesta taula amb un gràfic**.
 
 Recorda la taula del Bloc 1 sobre quin gràfic correspon a cada tipus de variable:
 
@@ -20,10 +17,7 @@ Recorda la taula del Bloc 1 sobre quin gràfic correspon a cada tipus de variabl
 | Quantitativa discreta | Diagrama de barres |
 | Quantitativa contínua (agrupada) | Histograma |
 
-La **dècada** és, en aquest cas, una variable que tractem com si fos discreta i
-ordenada (1950, 1960, 1970...): per tant, el gràfic que li correspon és un
-**diagrama de barres**, amb una barra per dècada i una alçada proporcional al
-percentatge de nits tropicals.
+La **dècada** és, en aquest cas, una variable que tractem com si fos discreta i ordenada (1950, 1960, 1970...): per tant, el gràfic que li correspon és un **diagrama de barres**, amb una barra per dècada i una alçada proporcional al percentatge de nits tropicals.
 
 ## Objectius
 
@@ -32,10 +26,13 @@ percentatge de nits tropicals.
 - Construir el mateix gràfic a Google Sheets amb l'assistent de gràfics.
 - Interpretar críticament què mostra —i què no mostra— aquest primer gràfic (per exemple, per què la darrera barra "no és comparable del tot" amb les altres, tal com vam veure a l'Activitat 4).
 
-## Pas 1 — Tenir les dades a punt
+## Part A — Treballem amb R
 
-Continuem amb la taula `resum` que vam construir a l'Activitat 4 (columnes `decada`,
-`n_total`, `n_tropicals`, `percentatge`). Si no la tens desada, torna-la a calcular:
+Primer fem tot el recorregut amb **R** (RStudio). A la Part B repetirem les mateixes operacions amb **Google Sheets**.
+
+### R · Pas 1 — Tenir les dades a punt
+
+Continuem amb la taula `resum` que vam construir a l'Activitat 4 (columnes `decada`, `n_total`, `n_tropicals`, `percentatge`). Si no la tens desada, torna-la a calcular:
 
 ```r
 estiu$decada <- (estiu$ANY %/% 10) * 10
@@ -52,17 +49,15 @@ resum <- data.frame(
 resum$percentatge <- round(100 * resum$n_tropicals / resum$n_total, 2)
 ```
 
-## Pas 2 — El gràfic més senzill possible
+### R · Pas 2 — El gràfic més senzill possible
 
 ```r
 barplot(resum$percentatge)
 ```
 
-Amb una única línia ja obtens un diagrama de barres! Però, tal com està, el gràfic
-és difícil d'interpretar: no sabem què representa cada barra ni què hi ha als eixos.
-Anem a millorar-lo pas a pas.
+Amb una única línia ja obtens un diagrama de barres! Però, tal com està, el gràfic és difícil d'interpretar: no sabem què representa cada barra ni què hi ha als eixos. Anem a millorar-lo pas a pas.
 
-## Pas 3 — Afegint noms, títol i eixos
+### R · Pas 3 — Afegint noms, títol i eixos
 
 ```r
 barplot(resum$percentatge,
@@ -74,8 +69,7 @@ barplot(resum$percentatge,
         ylim = c(0, 30))
 ```
 
-**Explicació de cada argument (a R, els arguments d'una funció es poden indicar amb
-`nom = valor`, en l'ordre que vulguis):**
+**Explicació de cada argument (a R, els arguments d'una funció es poden indicar amb `nom = valor`, en l'ordre que vulguis):**
 
 | Argument | Què fa |
 |---|---|
@@ -89,28 +83,11 @@ barplot(resum$percentatge,
 
 !!! note "Mini manual R: arguments amb nom vs. sense nom"
 
-    Fixa't que `resum$percentatge` no porta `nom =` davant: és l'**argument
-    posicional** (el primer que `barplot()` espera, tal com indica la seva ajuda
-    —`?barplot`—). La resta d'arguments sí que porten nom (`main =`, `col =`...)
-    perquè `barplot()` en té molts i és més clar (i evita errors) indicar
-    explícitament a quin es refereix cada valor, en lloc de memoritzar-ne l'ordre
-    exacte.
+    Fixa't que `resum$percentatge` no porta `nom =` davant: és l'**argument posicional** (el primer que `barplot()` espera, tal com indica la seva ajuda —`?barplot`—). La resta d'arguments sí que porten nom (`main =`, `col =`...) perquè `barplot()` en té molts i és més clar (i evita errors) indicar explícitament a quin es refereix cada valor, en lloc de memoritzar-ne l'ordre exacte.
 
-## Pas 4 — El mateix gràfic a Google Sheets
+### R · Pas 4 — Una millora opcional: marcar la dècada incompleta
 
-1. Amb la taula resum (dècada i percentatge) ja construïda a l'Activitat 4 —ja sigui amb fórmules soltes o amb la taula dinàmica—, selecciona les dues columnes (`decada` i `percentatge`).
-2. **Inserir → Gràfic**.
-3. A la pestanya "Configuració", tria el tipus **"Gràfic de columnes"** (l'equivalent, a Sheets, del diagrama de barres vertical de R).
-4. A la pestanya "Personalitza", pots afegir el títol del gràfic i dels eixos, canviar el color de les barres, i fixar l'escala de l'eix vertical (per exemple, de 0 a 30), tal com hem fet a R amb `ylim`.
-
-Compara els dos gràfics (el de R i el de Sheets): haurien de mostrar exactament el
-mateix patró, encara que l'aspecte visual sigui una mica diferent.
-
-## Pas 5 — Una millora opcional: marcar la dècada incompleta
-
-Com vam veure a l'Activitat 4, la dècada de 2020 només té 6 anys (encara no ha
-acabat), mentre que la resta en tenen 10. Per no confondre qui miri el gràfic, és
-una bona pràctica distingir visualment aquesta última barra:
+Com vam veure a l'Activitat 4, la dècada de 2020 només té 6 anys (encara no ha acabat), mentre que la resta en tenen 10. Per no confondre qui miri el gràfic, és una bona pràctica distingir visualment aquesta última barra:
 
 ```r
 colors <- c(rep("steelblue", 7), "tomato")   # 7 dècades completes + 1 incompleta
@@ -128,24 +105,24 @@ barplot(resum$percentatge,
 - `c(rep("steelblue", 7), "tomato")`: combinem (amb `c()`, com ja hem vist) aquest vector de 7 colors amb un vuitè color diferent (`"tomato"`), per a la dècada de 2020.
 - Ara `col = colors` assigna un color diferent a cadascuna de les 8 barres, en lloc d'un únic color per a totes.
 
+## Part B — Treballem amb Google Sheets
+
+Ara fem el mateix amb el full de càlcul, partint de les dades que ja vas importar a l'Activitat 0.
+
+### Sheets · Pas 1 — El mateix gràfic
+
+1. Amb la taula resum (dècada i percentatge) ja construïda a l'Activitat 4 —ja sigui amb fórmules soltes o amb la taula dinàmica—, selecciona les dues columnes (`decada` i `percentatge`).
+2. **Inserir → Gràfic**.
+3. A la pestanya "Configuració", tria el tipus **"Gràfic de columnes"** (l'equivalent, a Sheets, del diagrama de barres vertical de R).
+4. A la pestanya "Personalitza", pots afegir el títol del gràfic i dels eixos, canviar el color de les barres, i fixar l'escala de l'eix vertical (per exemple, de 0 a 30), tal com hem fet a R amb `ylim`.
+
+Compara els dos gràfics (el de R i el de Sheets): haurien de mostrar exactament el mateix patró, encara que l'aspecte visual sigui una mica diferent.
+
 ## El gràfic resultant: què hi observem?
 
-El diagrama de barres mostra visualment el mateix patró que ja havíem llegit a la
-taula de l'Activitat 4: una tendència **clarament ascendent** des de la dècada de
-1970 (el valor més baix, 2,62%) fins a la dècada actual (28,14%, tot i ser
-incompleta). Un gràfic ben fet permet detectar d'un cop d'ull el que a la taula de
-números costa més de veure: per exemple, que el creixement no és perfectament
-constant (hi ha una pujada i una baixada entre 1950–1970 abans que comenci la
-pujada sostinguda a partir de 1980–1990).
+El diagrama de barres mostra visualment el mateix patró que ja havíem llegit a la taula de l'Activitat 4: una tendència **clarament ascendent** des de la dècada de 1970 (el valor més baix, 2,62%) fins a la dècada actual (28,14%, tot i ser incompleta). Un gràfic ben fet permet detectar d'un cop d'ull el que a la taula de números costa més de veure: per exemple, que el creixement no és perfectament constant (hi ha una pujada i una baixada entre 1950–1970 abans que comenci la pujada sostinguda a partir de 1980–1990).
 
-**Advertència que cal recordar sempre en llegir aquest gràfic:** la darrera barra
-(2020) representa només 6 anys, no 10 com la resta. Encara que hem fet servir
-percentatges (no valors absoluts) precisament per fer la comparació més justa, un
-percentatge calculat sobre menys anys és, en general, una mica menys fiable (més
-sensible a un any concret especialment càlid o fresc) que un calculat sobre 10 anys
-sencers. Aquesta idea —que mostres més petites donen resultats menys estables— la
-retrobarem més endavant al curs, quan parlem de com d'"anòmal" és realment aquest
-darrer valor.
+**Advertència que cal recordar sempre en llegir aquest gràfic:** la darrera barra (2020) representa només 6 anys, no 10 com la resta. Encara que hem fet servir percentatges (no valors absoluts) precisament per fer la comparació més justa, un percentatge calculat sobre menys anys és, en general, una mica menys fiable (més sensible a un any concret especialment càlid o fresc) que un calculat sobre 10 anys sencers. Aquesta idea —que mostres més petites donen resultats menys estables— la retrobarem més endavant al curs, quan parlem de com d'"anòmal" és realment aquest darrer valor.
 
 ## Per practicar
 
@@ -160,10 +137,4 @@ c) Escriu, amb les teves paraules, dues frases que resumeixin què li explicarie
 - Hem construït el nostre primer gràfic amb R (`barplot()`) i amb Sheets (gràfic de columnes), a partir de la taula de freqüències per dècada de l'Activitat 4.
 - Hem après a personalitzar un gràfic bàsic de R: títol, eixos, colors, escala.
 - Hem practicat una idea important d'anàlisi de dades: **avisar visualment** quan un grup de la comparació no és igual que la resta (la dècada incompleta de 2020).
-- Amb aquesta activitat tanquem el recorregut complet del bloc: **dades brutes →
-  variable pròpia (nit tropical) → filtratge → taula de freqüències (dicotòmica, per
-  intervals, per dècada) → gràfic**. Aquest mateix recorregut —neteja de dades,
-  construcció de variables, taules i gràfics— és el que tornarem a fer, amb eines
-  noves, en cadascun dels blocs següents del curs (representacions gràfiques,
-  mesures de centralitat, dispersió i regressió), sempre sobre aquest mateix conjunt
-  de dades de Nulles.
+- Amb aquesta activitat tanquem el recorregut complet del bloc: **dades brutes → variable pròpia (nit tropical) → filtratge → taula de freqüències (dicotòmica, per intervals, per dècada) → gràfic**. Aquest mateix recorregut —net de dades, construcció de variables, taules i gràfics— és el que tornarem a fer, amb eines noves, en cadascun dels blocs següents del curs (representacions gràfiques, mesures de centralitat, dispersió i regressió), sempre sobre aquest mateix conjunt de dades de Nulles.
