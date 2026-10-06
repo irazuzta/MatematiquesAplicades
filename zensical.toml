@@ -22,6 +22,11 @@ nav = [
     { "3. Taula amb intervals" = "laboratori/03_taula_intervals.md" },
     { "4. Agrupar per dècades" = "laboratori/04_agrupar_decades.md" },
     { "5. El primer gràfic" = "laboratori/05_primer_grafic.md" },
+    { "6. Gràfics I: sectors, barres i Pareto" = "laboratori/06_grafics_sectors_barres_pareto.md" },
+    { "7. Gràfics II: histogrames i línies" = "laboratori/07_grafics_histogrames_linies.md" },
+    { "8. Mitjana, mediana i moda" = "laboratori/08_centralitat_mitjana_mediana_moda.md" },
+    { "9. Rang, variància i desviació típica" = "laboratori/09_dispersio_rang_variancia_desviacio.md" },
+    { "10. Percentils, quartils i boxplot" = "laboratori/10_percentils_quartils_boxplot.md" },
   ] },
 ]
 
